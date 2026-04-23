@@ -145,7 +145,7 @@
     <section class="main-banner">
         <h1 class="banner-title">GELECEK BİZİZ!</h1>
         <div class="banner-btns">
-            <a href="https://www.instagram.com/halklisseferihisar/" target="_blank" class="btn-katil">BİZE KATIL</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeslt4ARUFqvOgLZ4KMhhcwJ2nwXfQ_NpABO5GnmnWndO1aAg/viewform?usp=sharing&ouid=102177069469592126598" target="_blank" class="btn-katil">BİZE KATIL</a>
             <button class="btn-imamoglu" onclick="openImamogluPage()">EKREM İMAMOĞLU ÖZEL</button>
         </div>
     </section>
@@ -249,10 +249,22 @@
             }
         }
 
+        // Sayaç Düzenlendi (Bugün bayramsa kutla)
         setInterval(() => {
-            const diff = new Date('2026-04-23') - new Date();
-            const d = Math.floor(diff / 864e5), h = Math.floor((diff % 864e5) / 36e5), m = Math.floor((diff % 36e5) / 6e4), s = Math.floor((diff % 6e4) / 1000);
-            document.getElementById('timer').innerText = `23 NİSAN'A: ${d} GÜN ${h}:${m}:${s}`;
+            const targetDate = new Date('2026-04-23T00:00:00');
+            const now = new Date();
+            const diff = targetDate - now;
+            
+            // Eğer bugün 23 Nisan ise (Bugünün tarihini kontrol et)
+            if (now.getDate() === 23 && now.getMonth() === 3 && now.getFullYear() === 2026) {
+                document.getElementById('timer').innerText = "ULUSAL EGEMENLİK VE ÇOCUK BAYRAMIMIZ KUTLU OLSUN!";
+            } else if (diff > 0) {
+                const d = Math.floor(diff / 864e5), h = Math.floor((diff % 864e5) / 36e5), m = Math.floor((diff % 36e5) / 6e4), s = Math.floor((diff % 6e4) / 1000);
+                document.getElementById('timer').innerText = `23 NİSAN'A: ${d} GÜN ${h}:${m}:${s}`;
+            } else {
+                // Tarih geçtikten sonra sayaç durmasın diye alternatif bir tarih atayabilirsin veya yazıyı sabitleyebilirsin.
+                document.getElementById('timer').innerText = "GELECEK BİZİZ, CUMHURİYET BİZE EMANET!";
+            }
         }, 1000);
 
         document.querySelectorAll('.faq-question').forEach(item => {
