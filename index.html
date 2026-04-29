@@ -145,16 +145,16 @@
     <section class="main-banner">
         <h1 class="banner-title">GELECEK BİZİZ!</h1>
         <div class="banner-btns">
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeslt4ARUFqvOgLZ4KMhhcwJ2nwXfQ_NpABO5GnmnWndO1aAg/viewform?usp=sharing&ouid=102177069469592126598" target="_blank" class="btn-katil">BİZE KATIL</a>
+            <a href="https://docs.google.com/forms/d/e/SİZİN_FORM_İDNİZ/viewform" target="_blank" class="btn-katil">BİZE KATIL</a>
             <button class="btn-imamoglu" onclick="openImamogluPage()">EKREM İMAMOĞLU ÖZEL</button>
         </div>
     </section>
 
     <div class="container">
-        <section class="about-section reveal">
+        <section class="about-section reveal reveal-counter">
             <h2 class="section-title">BİZ KİMİZ?</h2>
-            <div class="stat-number">500+</div>
-            <p style="font-size: 0.8rem; color: #666; letter-spacing: 2px; margin-bottom: 20px;">SEFERİHİSARLI GENÇ BİZİMLE</p>
+            <div class="stat-number" id="member-count">0</div>
+            <p style="font-size: 0.8rem; color: #666; letter-spacing: 2px; margin-bottom: 20px;">GENÇ BİZİMLE</p>
             <p style="max-width: 800px; margin: 0 auto; color: #bbb;">Cumhuriyetin değerlerini savunan, Atatürk ilke ve inkılaplarını rehber edinen Seferihisar'ın lise gençliğiyiz. Geleceği inşa etmek için buradayız!</p>
         </section>
         
@@ -249,20 +249,37 @@
             }
         }
 
-        // Sayaç Düzenlendi (Bugün bayramsa kutla)
+        // Gelişmiş Sayaç: Sadece görünür olduğunda tetiklenir
+        let hasCounted = false;
+        function animateCount(id, target) {
+            if(hasCounted) return;
+            hasCounted = true;
+            let current = 0;
+            const duration = 2000; // 2 saniyede tamamlansın
+            const increment = target / (duration / 20);
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    document.getElementById(id).innerText = target + "+";
+                    clearInterval(timer);
+                } else {
+                    document.getElementById(id).innerText = Math.floor(current);
+                }
+            }, 20);
+        }
+
+        // Bayram Sayacı
         setInterval(() => {
-            const targetDate = new Date('2026-04-23T00:00:00');
+            const targetDate = new Date('2026-05-19T00:00:00');
             const now = new Date();
             const diff = targetDate - now;
             
-            // Eğer bugün 23 Nisan ise (Bugünün tarihini kontrol et)
-            if (now.getDate() === 23 && now.getMonth() === 3 && now.getFullYear() === 2026) {
-                document.getElementById('timer').innerText = "ULUSAL EGEMENLİK VE ÇOCUK BAYRAMIMIZ KUTLU OLSUN!";
+            if (now.getDate() === 19 && now.getMonth() === 4 && now.getFullYear() === 2026) {
+                document.getElementById('timer').innerText = "19 MAYIS ATATÜRK'Ü ANMA, GENÇLİK VE SPOR BAYRAMIMIZ KUTLU OLSUN!";
             } else if (diff > 0) {
                 const d = Math.floor(diff / 864e5), h = Math.floor((diff % 864e5) / 36e5), m = Math.floor((diff % 36e5) / 6e4), s = Math.floor((diff % 6e4) / 1000);
-                document.getElementById('timer').innerText = `23 NİSAN'A: ${d} GÜN ${h}:${m}:${s}`;
+                document.getElementById('timer').innerText = `19 MAYIS'A: ${d} GÜN ${h}:${m}:${s}`;
             } else {
-                // Tarih geçtikten sonra sayaç durmasın diye alternatif bir tarih atayabilirsin veya yazıyı sabitleyebilirsin.
                 document.getElementById('timer').innerText = "GELECEK BİZİZ, CUMHURİYET BİZE EMANET!";
             }
         }, 1000);
@@ -271,7 +288,18 @@
             item.addEventListener('click', () => item.parentElement.classList.toggle('active'));
         });
 
-        ScrollReveal().reveal('.reveal', { delay: 200, distance: '30px', origin: 'bottom' });
+        // ScrollReveal ayarları ve Sayaç Tetikleyici
+        ScrollReveal().reveal('.reveal', { 
+            delay: 200, 
+            distance: '30px', 
+            origin: 'bottom',
+            afterReveal: function(el) {
+                // Eğer açılan element bizim sayaç kısmımızsa sayacı başlat
+                if(el.classList.contains('reveal-counter')) {
+                    animateCount('member-count', 500);
+                }
+            }
+        });
     </script>
 </body>
 </html>
