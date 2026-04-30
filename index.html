@@ -41,7 +41,7 @@
         .btn-imamoglu { padding: 15px 40px; background: #fff; color: #000; border-radius: 50px; font-weight: 800; border: none; cursor: pointer; transition: 0.3s; }
 
         /* MODAL SAYFALARI */
-        .special-page { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 10000; overflow-y: auto; padding: 50px 20px; }
+        .special-page { display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #000; z-index: 10000; overflow-y: scroll; overflow-x: hidden; -webkit-overflow-scrolling: touch; padding: 50px 20px; }
         .close-page { position: fixed; top: 20px; right: 30px; font-size: 2.5rem; color: #fff; cursor: pointer; z-index: 10001; }
         .photo-gallery { max-width: 800px; margin: 0 auto; text-align: center; }
         .gallery-photo { width: 100%; max-width: 700px; border-radius: 15px; margin-bottom: 30px; border: 2px solid #e30113; display: block; margin-left: auto; margin-right: auto; }
@@ -104,15 +104,69 @@
         </div>
     </div>
 
-    <div id="imamogluPage" class="special-page">
-        <span class="close-page" onclick="closeSpecialPage('imamogluPage', 'yigidim-audio')">×</span>
-        <div class="photo-gallery">
-            <h1 style="color: #e30113; margin-bottom: 30px;">Yiğidim Aslanım Burda Yatıyor</h1>
-            <audio id="yigidim-audio" loop><source src="yigidim-aslanim.mp3" type="audio/mpeg"></audio>
-            <img src="ekrem1.jpg" class="gallery-photo reveal-photo">
-            <img src="ekrem2.jpg" class="gallery-photo reveal-photo">
-        </div>
+<!-- İmamoğlu Sayfası -->
+<div id="imamogluPage" class="special-page">
+    <span class="close-page" onclick="closeSpecialPage('imamogluPage', 'yigidim-audio')">×</span>
+    <div class="photo-gallery">
+        <h1 style="color: #e30113; margin-bottom: 30px;">Yiğidim Aslanım Burda Yatıyor</h1>
+        <audio id="yigidim-audio" loop>
+            <source src="yigidim-aslanim.mp3" type="audio/mpeg">
+        </audio>
+        <img src="ekrem1.jpg" class="gallery-photo reveal-photo">
+        <img src="ekrem2.jpg" class="gallery-photo reveal-photo">
     </div>
+</div> 
+
+<!-- CHP Sayfası -->
+<div id="chpPage" class="special-page">
+    <span class="close-page" onclick="closeSpecialPage('chpPage')">×</span>
+    <div style="max-width:800px; margin:0 auto; text-align:center;">
+        <h1 style="color:#e30113;">CHP</h1>
+        <p>Cumhuriyet Halk Partisi (CHP), Türkiye Cumhuriyeti’nin ilk ve en köklü siyasi partisidir. Parti, 9 Eylül 1923 tarihinde Mustafa Kemal Atatürk tarafından kurulmuştur. CHP’nin temeli, Kurtuluş Savaşı sürecinde oluşan ulusal direniş hareketine dayanır.
+
+Kurtuluş Savaşı ve CHP’nin Doğuşu
+Osmanlı Devleti’nin Birinci Dünya Savaşı sonrasında fiilen sona ermesiyle, Anadolu toprakları işgal altına girdi. Bu işgale karşı Türk halkının bağımsızlık mücadelesi Mustafa Kemal Paşa’nın 19 Mayıs 1919’da Samsun’a çıkışıyla başladı. Atatürk, Anadolu’nun dört bir yanında halkı örgütleyerek ulusal bir direniş hareketi başlattı.
+
+Bu dönemde kurulan Anadolu ve Rumeli Müdafaa-i Hukuk Cemiyeti, halkın iradesini temsil eden bir örgüt haline geldi. Bu örgüt, 23 Nisan 1920’de Türkiye Büyük Millet Meclisi’nin açılmasıyla siyasal bir yapıya dönüştü. Kurtuluş Savaşı, Türk milletinin kendi kaderini belirleme hakkını kazandığı bir dönüm noktası oldu.
+
+Zaferin ardından, Atatürk bağımsız bir devletin halk iradesine dayanması gerektiğini düşünüyordu. Bu fikir doğrultusunda, savaşın ardından yeni bir devlet düzenini kurmak ve reformları hayata geçirmek için bir siyasi örgütlenme ihtiyacı doğdu. Bu amaçla, 9 Eylül 1923’te Halk Fırkası kuruldu. Parti, 1935 yılında bugünkü adını alarak Cumhuriyet Halk Partisi (CHP) oldu.
+
+Cumhuriyeti Kuran Parti
+CHP, Türkiye Cumhuriyeti’ni kuran parti olarak tarihe geçmiştir. Cumhuriyet’in ilanı (29 Ekim 1923), laikliğin benimsenmesi, eğitim birliği, kadın haklarının tanınması, ekonomik kalkınma hamleleri gibi birçok köklü reform, CHP döneminde gerçekleştirilmiştir. Parti, bu dönemde yalnızca bir siyasi yapı değil, aynı zamanda devletin kurucu örgütü olarak görev yapmıştır.
+
+CHP’nin amblemi olan altı ok, hem partinin hem de Cumhuriyet’in temel ilkelerini simgeler:
+
+Cumhuriyetçilik: Egemenliğin millete ait olması, monarşinin reddi.
+Halkçılık: Herkesin eşit yurttaş olması, sınıf ayrımına karşı durmak.
+Laiklik: Devletin din kurallarından bağımsız olması.
+Devletçilik: Ekonomide devletin yönlendirici rol üstlenmesi.
+Devrimcilik: Yeniliklere ve gelişmeye açık olmak.
+Milliyetçilik: Irka değil, yurttaşlık bağına dayalı birlik anlayışı.
+Bu ilkeler, Türkiye Cumhuriyeti’nin temel yönetim anlayışını ve CHP’nin ideolojik çizgisini oluşturur.
+
+Atatürk’ün “İki Büyük Eserim” Sözü
+Mustafa Kemal Atatürk, yaşamının son yıllarında şöyle demiştir:
+
+“Benim iki büyük eserim vardır: Biri Türkiye Cumhuriyeti, diğeri Cumhuriyet Halk Partisi’dir.”
+Bu söz, CHP’nin Cumhuriyet ile birlikte kurulduğunu ve onun değerlerini temsil ettiğini anlatır. Atatürk’e göre Cumhuriyet, Türk milletinin özgürlüğünü; CHP ise o özgürlüğü koruyacak, geliştirecek ve yaşatacak kurumsal yapıyı temsil eder.
+
+“Baba Ocağı” Anlayışı
+Cumhuriyet Halk Partisi, kurucusu Atatürk’ün liderliği ve Cumhuriyet’in değerleriyle özdeşleştiği için, halk arasında “Baba Ocağı” olarak anılmaya başlanmıştır. Bu ifade, Türk milletinin Atatürk’ü “ulusal bir baba” figürü olarak görmesinden gelir. Atatürk, halkı koruyan, eğiten ve yol gösteren bir önder olarak algılanmıştır. CHP de, onun kurduğu kurum olarak, Cumhuriyet’in evi, halkın sığınacağı güvenli yer anlamında “baba ocağı” tanımıyla anılmıştır.
+
+Bu tanım, sadece duygusal bir benzetme değil, aynı zamanda tarihsel bir sürekliliği anlatır. CHP, kuruluşundan bu yana halkın haklarını savunan, Cumhuriyet değerlerini koruyan bir yapı olarak görülmüştür. Dolayısıyla “baba ocağı” ifadesi, CHP’nin Türkiye siyasi tarihinde devletin ve halkın ortak geçmişine dayanan bir simge haline gelmiştir.
+
+Günümüzde CHP’ye Yönelik Baskılar ve Siyasi Engellemeler
+Cumhuriyet Halk Partisi, tarih boyunca farklı dönemlerde baskılar, eleştiriler ve siyasi engellemelerle karşılaşmıştır. Tek parti döneminden çok partili hayata geçişte, askeri darbelerden olağanüstü dönemlere kadar, CHP zaman zaman haksız suçlamalara, kapatma girişimlerine ve baskıcı uygulamalara maruz kalmıştır.
+
+Günümüzde de CHP, bazı çevreler tarafından siyasi, idari ve medyatik baskılara uğramaktadır. Parti mensupları, özellikle yerel yönetimlerde görev yapan isimler, zaman zaman yargı, medya veya idari yollarla hedef alınmaktadır. Bu durum, Türkiye’de demokratik rekabetin sağlıklı bir şekilde işlemesi açısından tartışma konusu olmaktadır.
+
+CHP’ye yönelik mobbing, karalama kampanyaları, medya sansürleri gibi uygulamalar; partinin savunduğu değerlerin — yani laiklik, hukuk devleti, eşitlik ve özgürlük ilkelerinin — bazı dönemlerde politik baskı altında kaldığını göstermektedir. Bu tür durumlar, Cumhuriyet’in kuruluş felsefesini hatırlatan “baba ocağı” benzetmesinin yeniden önem kazanmasına neden olmuştur.
+
+CHP’nin Günümüzdeki Yeri
+Bugün CHP, Atatürk ilke ve devrimleri doğrultusunda hareket eden, demokratik düzen içinde siyasal mücadele yürüten bir partidir. Parti, kuruluşundan bugüne kadar geçen yüz yılı aşkın süreçte, Türkiye’nin siyasal, sosyal ve ekonomik gelişiminde sürekli bir rol oynamıştır. CHP, hem tarihsel kökeni hem de Cumhuriyet’in kurucu kimliği nedeniyle Türkiye siyasetinde özel bir konuma sahiptir.</p>
+    </div>
+</div>
+   
 
     <div class="millet-soz">EGEMENLİK KAYITSIZ ŞARTSIZ MİLLETİNDİR!</div>
 
@@ -134,6 +188,7 @@
             <div class="brand-text">HALK-LİS SEFERİHİSAR</div>
             <div class="header-nav">
                 <a href="#">ANA SAYFA</a>
+                <a onclick="openChpPage()">CHP</a>
                 <a onclick="openAtaPage()">ATA'NIN IŞIĞI</a>
                 <a href="#sss">SSS</a>
                 <a href="#iletisim">İLETİŞİM</a>
@@ -229,23 +284,34 @@
         }
 
         function openAtaPage() {
-            yigidim.pause(); document.getElementById('ataPage').style.display = 'block';
-            izmir.currentTime = 0; izmir.play(); musicIcon.className = 'fas fa-pause';
-            ScrollReveal().reveal('.reveal-photo', { delay: 200, container: '#ataPage' });
+            document.body.style.overflow = "hidden";
+            yigidim.pause();
+            document.getElementById('ataPage').style.display = 'block';
+            izmir.currentTime = 0;
+            izmir.play();
+            musicIcon.className = 'fas fa-pause';
         }
 
         function openImamogluPage() { 
-            izmir.pause(); musicIcon.className = 'fas fa-play';
+            document.body.style.overflow = "hidden";
+            izmir.pause();
+            musicIcon.className = 'fas fa-play';
             document.getElementById('imamogluPage').style.display = 'block'; 
             yigidim.play(); 
-            ScrollReveal().reveal('.reveal-photo', { delay: 200, container: '#imamogluPage' });
+        }
+
+        function openChpPage() {
+            document.body.style.overflow = "hidden";
+            document.getElementById('chpPage').style.display = 'block';
         }
 
         function closeSpecialPage(pageId, audioId) {
+            document.body.style.overflow = "auto";
             document.getElementById(pageId).style.display = 'none';
             if(audioId) {
                 const audio = document.getElementById(audioId);
-                audio.pause(); audio.currentTime = 0;
+                audio.pause();
+                audio.currentTime = 0;
             }
         }
 
