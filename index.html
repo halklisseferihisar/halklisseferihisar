@@ -76,7 +76,31 @@
         .footer-flex { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; }
         .footer-contact h4 { color: #e30113; margin-bottom: 15px; font-size: 1.3rem; }
 
-        @media (max-width: 768px) { .header-nav { display: none; } .banner-title { font-size: 1.8rem; } }
+        @media (max-width: 768px) { 
+    .header-flex {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .header-nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .header-nav a {
+        font-size: 0.75rem;
+    }
+
+    .atam-img {
+        height: 35px;
+    }
+
+    .banner-title {
+        font-size: 1.8rem;
+    }
+}
     </style>
 </head>
 <body>
@@ -255,6 +279,58 @@ Bugün CHP, Atatürk ilke ve devrimleri doğrultusunda hareket eden, demokratik 
         </section>
     </div>
 
+   <section class="reveal" style="margin-top:60px;">
+    <h2 class="section-title">SEFERİHİSAR HAKKINDA</h2>
+
+    <div style="max-width:800px; margin:0 auto; text-align:center; color:#bbb;">
+        <p>
+            Seferihisar, İzmir'in doğal güzellikleriyle öne çıkan,
+            Türkiye'nin ilk "Sakin Şehir" (Cittaslow) unvanına sahip ilçesidir.
+        </p>
+
+        <p>
+            Doğası, tarihi ve genç nüfusuyla Cumhuriyet değerlerine bağlı
+            bir yapıya sahiptir.
+        </p>
+    </div>
+</section>
+
+  <section class="reveal" style="margin-top:60px;">
+    <h2 class="section-title">ETKİNLİKLERİMİZ</h2>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:15px;">
+        
+        <div style="background:#111; border-radius:15px; overflow:hidden;">
+            <img src="etkinlik1.jpg" style="width:100%;">
+            <div style="padding:15px;">
+                <h3 style="color:#e30113;">EKLENECEK.</h3>
+                <p style="color:#bbb; font-size:0.9rem;">EKLENECEK.</p>
+            </div>
+        </div>
+
+        <div style="background:#111; border-radius:15px; overflow:hidden;">
+            <img src="etkinlik2.jpg" style="width:100%;">
+            <div style="padding:15px;">
+                <h3 style="color:#e30113;">1 Mayıs Selda Bağcan Konseri.
+
+</h3>
+                <p style="color:#bbb; font-size:0.9rem;">İzmir Halklis Efe Öztürk Başkanımızla Bir Araya Geldik.
+
+</p>
+            </div>
+        </div>
+
+        <div style="background:#111; border-radius:15px; overflow:hidden;">
+            <img src="etkinlik3.jpg" style="width:100%;">
+            <div style="padding:15px;">
+                <h3 style="color:#e30113;">Sosyal Proje</h3>
+                <p style="color:#bbb; font-size:0.9rem;">Toplumsal dayanışma çalışmaları.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+    
     <footer id="iletisim">
         <div class="container footer-flex">
             <div class="footer-contact">
