@@ -6,7 +6,29 @@
     <title>Halkçı Liseler Seferihisar | Gelecek Biziz!</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://unpkg.com/scrollreveal">
+// Açılış videosu güvenli kapatma
+const intro = document.getElementById("intro-video");
+const introVideo = document.getElementById("introVideo");
+const skipIntro = document.getElementById("skip-intro");
+
+function closeIntroVideo() {
+    if (intro) intro.classList.add("hide");
+}
+
+if (introVideo) {
+    introVideo.addEventListener("ended", closeIntroVideo);
+    introVideo.addEventListener("error", closeIntroVideo);
+}
+
+if (skipIntro) {
+    skipIntro.addEventListener("click", closeIntroVideo);
+}
+
+// Video açılmazsa ya da çok uzun kalırsa site kilitlenmesin
+setTimeout(closeIntroVideo, 6000);
+
+</script>
     
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
@@ -47,6 +69,33 @@
         .photo-gallery { max-width: 800px; margin: 0 auto; text-align: center; }
         .gallery-photo { width: 100%; max-width: 700px; border-radius: 15px; margin-bottom: 30px; border: 2px solid #e30113; display: block; margin-left: auto; margin-right: auto; }
 
+
+        /* CHP MODAL YAZI ALANI */
+        .chp-content {
+            width: 100%;
+            max-width: 900px;
+            max-height: calc(100vh - 100px);
+            margin: 0 auto;
+            padding: 20px;
+            overflow-y: auto;
+            overflow-x: hidden;
+            text-align: left;
+            color: #fff;
+            line-height: 1.8;
+            -webkit-overflow-scrolling: touch;
+        }
+        .chp-content h1 {
+            color: #e30113;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+        .chp-content p {
+            color: #eee;
+            font-size: 1rem;
+            white-space: pre-line;
+        }
+
         /* BÖLÜMLER */
         .section-title { color: #e30113; text-align: center; margin-bottom: 30px; font-weight: 800; font-size: 2rem; }
         .about-section { background: #0d0d0d; border-radius: 25px; padding: 50px 20px; border: 1px solid #222; text-align: center; margin-top: 40px; }
@@ -77,6 +126,111 @@
         .footer-flex { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; }
         .footer-contact h4 { color: #e30113; margin-bottom: 15px; font-size: 1.3rem; }
 
+
+        /* TARİH ŞERİDİ */
+        .timeline {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            padding-left: 25px;
+        }
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 8px;
+            top: 0;
+            width: 3px;
+            height: 100%;
+            background: #e30113;
+            border-radius: 10px;
+        }
+        .timeline-item {
+            background: #111;
+            border: 1px solid #222;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 18px;
+            position: relative;
+        }
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -24px;
+            top: 22px;
+            width: 14px;
+            height: 14px;
+            background: #e30113;
+            border-radius: 50%;
+            border: 3px solid #000;
+        }
+        .timeline-year {
+            color: #e30113;
+            font-weight: 800;
+            font-size: 1.2rem;
+            margin-bottom: 6px;
+        }
+
+        /* PREMIUM FOOTER */
+        .premium-footer {
+            background: radial-gradient(circle at top left, #1a1a1a, #000 60%);
+            padding: 60px 0 30px;
+            border-top: 3px solid #e30113;
+            margin-top: 80px;
+        }
+        .premium-footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            align-items: start;
+        }
+        .premium-footer h3,
+        .premium-footer h4 {
+            color: #e30113;
+            margin-bottom: 15px;
+        }
+        .premium-footer p,
+        .premium-footer a {
+            color: #bbb;
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .premium-footer a:hover {
+            color: #e30113;
+        }
+        .footer-socials {
+            display: flex;
+            gap: 12px;
+            margin-top: 12px;
+        }
+        .footer-socials a {
+            width: 42px;
+            height: 42px;
+            background: #111;
+            border: 1px solid #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #e30113;
+            font-size: 1.2rem;
+            transition: 0.3s;
+        }
+        .footer-socials a:hover {
+            background: #e30113;
+            color: #fff;
+            transform: translateY(-3px);
+        }
+        .footer-bottom {
+            border-top: 1px solid #222;
+            margin-top: 35px;
+            padding-top: 20px;
+            text-align: center;
+            color: #666;
+            font-size: 0.85rem;
+        }
+
         @media (max-width: 768px) { 
     .header-flex {
         flex-direction: column;
@@ -102,11 +256,57 @@
         font-size: 1.8rem;
     }
 }
-    </style>
+    
+/* AÇILIŞ VİDEOSU */
+#intro-video{
+    position:fixed;
+    inset:0;
+    background:#000;
+    z-index:999999;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    transition:opacity 0.8s ease, visibility 0.8s ease;
+}
+
+#intro-video video{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+#intro-video.hide{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+}
+
+#skip-intro{
+    position:absolute;
+    right:25px;
+    bottom:25px;
+    z-index:1000000;
+    padding:10px 18px;
+    background:#e30113;
+    color:#fff;
+    border:none;
+    border-radius:50px;
+    font-weight:800;
+    cursor:pointer;
+}
+
+</style>
 </head>
 <body>
 
-    <div class="music-player" onclick="toggleMainMusic()">
+<div id="intro-video">
+    <video autoplay muted playsinline id="introVideo">
+        <source src="atatürk-video.mp4" type="video/mp4">
+    </video>
+    <button id="skip-intro" type="button">Geç</button>
+</div>
+
+<div class="music-player" onclick="toggleMainMusic()">
         <i id="music-icon" class="fas fa-play"></i>
         <span style="font-size: 0.8rem; font-weight: 800;">İZMİR MARŞI</span>
         <audio id="izmir-mars" loop><source src="izmir-marsi.mp3" type="audio/mpeg"></audio>
@@ -145,8 +345,8 @@
 <!-- CHP Sayfası -->
 <div id="chpPage" class="special-page">
     <span class="close-page" onclick="closeSpecialPage('chpPage')">×</span>
-    <div style="max-width:800px; margin:0 auto; text-align:center;">
-        <h1 style="color:#e30113;">CHP</h1>
+    <div class="chp-content">
+        <h1>CHP</h1>
         <p>Cumhuriyet Halk Partisi (CHP), Türkiye Cumhuriyeti’nin ilk ve en köklü siyasi partisidir. Parti, 9 Eylül 1923 tarihinde Mustafa Kemal Atatürk tarafından kurulmuştur. CHP’nin temeli, Kurtuluş Savaşı sürecinde oluşan ulusal direniş hareketine dayanır.
 
 Kurtuluş Savaşı ve CHP’nin Doğuşu
@@ -191,6 +391,45 @@ CHP’nin Günümüzdeki Yeri
 Bugün CHP, Atatürk ilke ve devrimleri doğrultusunda hareket eden, demokratik düzen içinde siyasal mücadele yürüten bir partidir. Parti, kuruluşundan bugüne kadar geçen yüz yılı aşkın süreçte, Türkiye’nin siyasal, sosyal ve ekonomik gelişiminde sürekli bir rol oynamıştır. CHP, hem tarihsel kökeni hem de Cumhuriyet’in kurucu kimliği nedeniyle Türkiye siyasetinde özel bir konuma sahiptir.</p>
     </div>
 </div>
+
+
+    <!-- Özgür Özel Sayfası -->
+<div id="ozgurPage" class="special-page">
+    <span class="close-page" onclick="closeSpecialPage('ozgurPage')">×</span>
+
+    <div style="max-width:900px; margin:0 auto; text-align:center; color:#fff;">
+
+        <img src="ozgurozel.jpg"
+             style="width:180px; height:180px; object-fit:cover; border-radius:50%; border:5px solid #e30113; margin-bottom:25px;">
+
+        <h1 style="color:#e30113; margin-bottom:20px;">
+            Özgür Özel
+        </h1>
+
+        <p style="line-height:1.9; color:#ccc; font-size:1rem;">
+            Özgür Özel, 1974 yılında Manisa’da doğdu. İzmir Bornova Anadolu Lisesi Almanca Bölümü ve Manisa Lisesi’nde orta ve lise öğretimini, Ege Üniversitesi Eczacılık Fakültesi’nde lisans eğitimini tamamladı.
+
+1999 yılında serbest eczacılığa başlayan Özel, Manisa Eczacı Odası’nda, 2001-2007 yılları arasında bir dönem Genel Sekreterlik ve iki dönem Oda Başkanlığı görevlerinde bulundu. Aynı yıllarda Manisa Akademik Odalar Birliği Dönem Sözcülüğü ve Başkanlığı görevlerini yürüttü. Bu dönemde Manisa Cumhuriyet Mitingi’nin düzenleyiciliği ve sözcülüğünü yaptı. Eczacı Özgür Özel, Oda Başkanlığı döneminde hayata geçirdiği sosyal ve çevre projeleri ile çeşitli ödüller aldı.
+
+Uluslararası Eczacılık Federasyonu, Avrupa Birliği Eczacılık Grubu, Avrupa Eczacılık Forumu gibi uluslararası örgütlere üyeliği ve Türkiye delegeliği bulunan Özel, 163 tane kongre ve konferansta yazılı ve sözlü bildiri, sunum ve panel yöneticiliği yapmıştır.
+
+29 Mart 2009 yerel seçimlerinde Cumhuriyet Halk Partisi Manisa Belediye Başkan adayı olan Özgür Özel, 33. Olağan Kurultay’da ve 15. Olağanüstü Kurultay’da Cumhuriyet Halk Partisi Manisa İli Delegesi olarak görev yaptı.
+
+2007 yılı ve 2009 yılı Aralık aylarında yapılan seçimlerde Türk Eczacıları Birliği Merkez Heyetine seçildi. Türk Eczacıları Birliği’nde bir dönem Saymanlık, iki dönem Genel Sekreterlik görevlerini yürüttü. 10.03.2011 tarihinde Milletvekili Adayı olmak üzere görevinden istifa etti. 12 Haziran 2011 tarihinde yapılan Milletvekili Genel Seçimlerinde Cumhuriyet Halk Partisi Manisa milletvekili olarak seçildi.
+
+24., 25., 26., 27.,28. dönemlerde Manisa Milletvekili olarak seçildi. Sağlık, Aile, Çalışma Ve Sosyal İşler Komisyonu, SOMA Maden Kazasını Araştırma Komisyonu, CHP Ceza Evlerini İzleme Ve İnceleme Komisyonu ve CHP Üniversitelerin Ve Öğrencilerin Sorunlarını Araştırma Komisyonu’nda görev aldı.
+
+18.CHP Olağanüstü Kurultayı’nda parti meclisi üyesi seçildi. Grup Başkanvekilliği görevini üstlenene kadar bu görevini sürdürdü.
+
+25. 26. ve 27.dönemde CHP Grup Başkanvekili, 28.dönemde Grup Başkanı olarak görev yaptı.
+
+38. CHP Olağan Kurultayı’nda Genel Başkan seçildi.
+
+Anne ve babası emekli öğretmen olan Özgür Özel, Ecz. Didem Özel ile evlidir ve İpek adında bir kızları vardır.
+        </p>
+
+    </div>
+</div>
    
 
     <div class="millet-soz">EGEMENLİK KAYITSIZ ŞARTSIZ MİLLETİNDİR!</div>
@@ -213,10 +452,12 @@ Bugün CHP, Atatürk ilke ve devrimleri doğrultusunda hareket eden, demokratik 
             <div class="brand-text">HALK-LİS SEFERİHİSAR</div>
             <div class="header-nav">
                 <a href="#">ANA SAYFA</a>
-                <a onclick="openChpPage()">CHP</a>
+                <a href="chp.html">CHP</a>
+                <a href="ozgurozel.html">ÖZGÜR ÖZEL</a>
                 <a onclick="openAtaPage()">ATA'NIN IŞIĞI</a>
                 <a href="#sss">SSS</a>
                 <a href="#iletisim">İLETİŞİM</a>
+                <a href="galeri.html">GALERİ</a>
                 <img src="atam!.jpg" alt="Atatürk" class="atam-img" onclick="openAtaPage()">
             </div>
         </div>
@@ -226,7 +467,7 @@ Bugün CHP, Atatürk ilke ve devrimleri doğrultusunda hareket eden, demokratik 
         <h1 class="banner-title">GELECEK BİZİZ!</h1>
         <div class="banner-btns">
             <a href="https://docs.google.com/forms/d/e/SİZİN_FORM_İDNİZ/viewform" target="_blank" class="btn-katil">BİZE KATIL</a>
-            <button class="btn-imamoglu" onclick="openImamogluPage()">EKREM İMAMOĞLU ÖZEL</button>
+            <a href="ekremimamoglu.html" class="btn-imamoglu" style="text-decoration:none;">EKREM İMAMOĞLU ÖZEL</a>
         </div>
     </section>
 
@@ -367,20 +608,35 @@ Bugün CHP, Atatürk ilke ve devrimleri doğrultusunda hareket eden, demokratik 
 <section class="reveal" style="margin-top:60px;">
     <h2 class="section-title">YÖNETİM</h2>
 
-    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:20px; max-width:800px; margin:0 auto;">
+    <!-- 🔴 GENEL BAŞKAN (ÜSTTE TEK) -->
+    <div style="display:flex; justify-content:center; margin-bottom:40px;">
+        <div style="background:#111; padding:30px; border-radius:20px; text-align:center; border-bottom:4px solid #e30113; width:260px;">
+            
+            <img src="ozgurozel.jpg"
+                 style="width:160px; height:160px; object-fit:cover; border-radius:50%; border:4px solid #e30113; margin-bottom:15px;">
+
+            <h3 style="color:#fff; font-size:1.2rem;">Özgür Özel</h3>
+            <p style="color:#e30113; font-weight:700;">CHP Genel Başkanı</p>
+
+        </div>
+    </div>
+
+    <!-- 🔴 ALTTA İL + İLÇE -->
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:20px; max-width:600px; margin:0 auto;">
         
         <!-- İl Başkanı -->
         <div style="background:#111; padding:25px; border-radius:20px; text-align:center; border-bottom:4px solid #e30113;">
-            <img src="ilbaskani.jpg" style="width:120px; height:120px; object-fit:cover; border-radius:50%; border:3px solid #e30113; margin-bottom:15px;">
+            <img src="ilbaskani.jpg"
+                 style="width:130px; height:130px; object-fit:cover; border-radius:50%; border:4px solid #e30113; margin-bottom:15px;">
             <h3 style="color:#fff;">Efe Öztürk</h3>
             <p style="color:#e30113; font-weight:700;">İl Başkanı</p>
         </div>
 
         <!-- İlçe Başkanı -->
         <div style="background:#111; padding:25px; border-radius:20px; text-align:center; border-bottom:4px solid #e30113;">
-           <img src="ilcebaskani.jpg"
-     style="width:120px; height:120px; object-fit:cover; object-position:center 20%; border-radius:50%; border:4px solid #e30113;">
-            <h3 style="color:#fff;">H.Ege Kasapoğlu</h3>
+            <img src="ilcebaskani.jpg"
+                 style="width:130px; height:130px; object-fit:cover; object-position:center 20%; border-radius:50%; border:4px solid #e30113; margin-bottom:15px;">
+            <h3 style="color:#fff;">H. Ege Kasapoğlu</h3>
             <p style="color:#e30113; font-weight:700;">İlçe Başkanı</p>
         </div>
 
@@ -391,7 +647,7 @@ Bugün CHP, Atatürk ilke ve devrimleri doğrultusunda hareket eden, demokratik 
 
     <div style="max-width:400px; margin:0 auto;">
 
-        <a href="https://instagram.com" target="_blank" style="text-decoration:none;">
+        <a href="https://instagram.com/halklisseferihisar" target="_blank" style="text-decoration:none;">
             <div style="display:flex; align-items:center; gap:15px; background:#111; padding:15px; border-radius:12px; margin-bottom:10px;">
                 <i class="fab fa-instagram" style="font-size:1.5rem; color:#e30113;"></i>
                 <span style="color:#bbb;">Instagram</span>
@@ -415,19 +671,43 @@ Bugün CHP, Atatürk ilke ve devrimleri doğrultusunda hareket eden, demokratik 
     </div>
 </section>
 
-    <footer id="iletisim">
-        <div class="container footer-flex">
-            <div class="footer-contact">
-                <h4>İLETİŞİM BİLGİLERİ</h4>
-                <p><i class="fas fa-map-marker-alt" style="color:#e30113"></i> Seferihisar, İzmir / TÜRKİYE</p>
-                <p><i class="fab fa-instagram" style="color:#e30113"></i> @halklisseferihisar</p>
+    <footer id="iletisim" class="premium-footer">
+        <div class="container">
+            <div class="premium-footer-grid">
+                <div>
+                    <h3>HALK-LİS SEFERİHİSAR</h3>
+                    <p>Cumhuriyetin bekçisi gençlik burada.</p>
+                    <p>Atatürk ilke ve devrimleri yolunda geleceği birlikte kuruyoruz.</p>
+                    <div class="footer-socials">
+                        <a href="https://instagram.com/halklisseferihisar" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4>Hızlı Linkler</h4>
+                    <a href="index.html">Ana Sayfa</a>
+                    <a href="chp.html">CHP</a>
+                    <a href="ozgurozel.html">Özgür Özel</a>
+                    <a href="galeri.html">Galeri</a>
+                    <a href="#sss">SSS</a>
+                </div>
+
+                <div>
+                    <h4>İletişim</h4>
+                    <p><i class="fas fa-map-marker-alt" style="color:#e30113"></i> Seferihisar, İzmir / Türkiye</p>
+                    <p><i class="fab fa-instagram" style="color:#e30113"></i> @halklisseferihisar</p>
+                    <p><i class="fas fa-envelope" style="color:#e30113"></i> İletişim için Instagram DM</p>
+                </div>
             </div>
-            <div style="text-align: right;">
-                <p style="font-size: 0.9rem; color: #666;">Cumhuriyetin Bekçisi Gençlik Burada!</p>
-                <p>© 2026 | <a href="https://www.instagram.com/33ege35/" target="_blank" style="color: #e30113; text-decoration: none; font-weight: 800;">H. Ege KASAPOĞLU</a></p>
+
+            <div class="footer-bottom">
+                © 2026 | H. Ege KASAPOĞLU
             </div>
         </div>
     </footer>
+
     
      
 
@@ -466,6 +746,11 @@ Bugün CHP, Atatürk ilke ve devrimleri doğrultusunda hareket eden, demokratik 
         function openChpPage() {
             document.body.style.overflow = "hidden";
             document.getElementById('chpPage').style.display = 'block';
+        }
+
+        function openOzgurPage() {
+            document.body.style.overflow = "hidden";
+            document.getElementById('ozgurPage').style.display = 'block';
         }
 
         function closeSpecialPage(pageId, audioId) {
@@ -529,6 +814,28 @@ Bugün CHP, Atatürk ilke ve devrimleri doğrultusunda hareket eden, demokratik 
                 }
             }
         });
-    </script>
+    
+// Açılış videosu güvenli kapatma
+const intro = document.getElementById("intro-video");
+const introVideo = document.getElementById("introVideo");
+const skipIntro = document.getElementById("skip-intro");
+
+function closeIntroVideo() {
+    if (intro) intro.classList.add("hide");
+}
+
+if (introVideo) {
+    introVideo.addEventListener("ended", closeIntroVideo);
+    introVideo.addEventListener("error", closeIntroVideo);
+}
+
+if (skipIntro) {
+    skipIntro.addEventListener("click", closeIntroVideo);
+}
+
+// Video açılmazsa ya da çok uzun kalırsa site kilitlenmesin
+setTimeout(closeIntroVideo, 6000);
+
+</script>
 </body>
 </html>
