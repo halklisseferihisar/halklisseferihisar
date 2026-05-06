@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galeri | Halk-Lis Seferihisar</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+
+body { background: #0a0a0a; color: #fff; line-height: 1.6; }
+
+header { background: #111; border-bottom: 3px solid #e30113; padding: 18px 20px; text-align: center; }
+
+header h1 { color: #e30113; font-size: 1.8rem; }
+
+.container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+
+.gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
+
+.gallery-card { background: #111; border-radius: 18px; overflow: hidden; border: 1px solid #222; transition: 0.3s; }
+
+.gallery-card:hover { transform: translateY(-5px); border-color: #e30113; }
+
+.gallery-card img { width: 100%; height: 240px; object-fit: cover; display: block; }
+
+.gallery-card div { padding: 15px; }
+
+.gallery-card h3 { color: #e30113; margin-bottom: 8px; }
+
+.gallery-card p { color: #bbb; font-size: 0.9rem; }
+
+.back-btn {
+    display: inline-block;
+    margin-top: 35px;
+    background: #e30113;
+    color: #fff;
+    padding: 12px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 800;
+}
+
+footer {
+    text-align: center;
+    padding: 30px 20px;
+    color: #666;
+    border-top: 1px solid #222;
+    margin-top: 40px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>FOTOĞRAFLAR & GALERİ</h1>
+    <p style="color:#bbb;">Halk-Lis Seferihisar etkinliklerinden kareler</p>
+</header>
+
+<div class="container">
+    <div class="gallery-grid">
+
+        <div class="gallery-card">
+            <img src="etkinlik1.jpg" alt="Etkinlik 1">
+            <div>
+                <h3>Skeç-i Hisar</h3>
+                <p>Kültür ve sanatla dolu güzel bir etkinlikten kare.</p>
+            </div>
+        </div>
+
+        <div class="gallery-card">
+            <img src="etkinlik2.jpg" alt="Etkinlik 2">
+            <div>
+                <h3>1 Mayıs Konseri</h3>
+                <p>Gençlerle bir araya geldiğimiz özel bir gün.</p>
+            </div>
+        </div>
+
+        <div class="gallery-card">
+            <img src="etkinlik3.jpg" alt="Etkinlik 3">
+            <div>
+                <h3>Sosyal Proje</h3>
+                <p>Dayanışma ve toplumsal sorumluluk çalışmalarımız.</p>
+            </div>
+        </div>
+
+        <div class="gallery-card">
+            <img src="post1.jpg" alt="Post 1">
+            <div>
+                <h3>Yeni Fotoğraf</h3>
+                <p>Buraya yeni sosyal medya postunu ekleyebilirsin.</p>
+            </div>
+        </div>
+
+        <div class="gallery-card">
+            <img src="post2.jpg" alt="Post 2">
+            <div>
+                <h3>Yeni Fotoğraf</h3>
+                <p>Buraya yeni etkinlik fotoğrafı ekleyebilirsin.</p>
+            </div>
+        </div>
+
+        <div class="gallery-card">
+            <img src="post3.jpg" alt="Post 3">
+            <div>
+                <h3>Yeni Fotoğraf</h3>
+                <p>Buraya açıklama yazabilirsin.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div style="text-align:center;">
+        <a href="index.html" class="back-btn">Ana Sayfaya Dön</a>
+    </div>
+</div>
+
+<footer>
+    © 2026 | Halk-Lis Seferihisar
+</footer>
+
+</body>
+</html>
